@@ -13,7 +13,7 @@ bucket = 'bucket1'
 mybucket = s3.Bucket(bucket)
 
 for obj in mybucket.objects.all():
-	objectValue = bucket + obj.key
+	objectValue = bucket + '/' + obj.key
 	key = obj.key.split('/')[-1]
 	returnDict[key].append(objectValue)
 	print(objectValue)
@@ -24,7 +24,7 @@ bucket = 'bucket2'
 mybucket = s3.Bucket(bucket)
 
 for obj in mybucket.objects.filter(Prefix='qux/'): # <<<Example of setting a prefix filter for bucket2>>>
-  objectValue = bucket + obj.key
+	objectValue = bucket + '/' + obj.key
 	key = obj.key.split('/')[-1]
 	returnDict[key].append(objectValue)
 	print(objectValue)
